@@ -1,5 +1,5 @@
 # Turning design mockups into code with deep learning
-[![Cloud GPU](https://img.shields.io/badge/Run%20experiment%20on-FloydHub-blue.svg)](https://www.floydhub.com/emilwallner/projects/picturetocode)
+[![Cloud GPU](https://img.shields.io/badge/Run%20on-FloydHub-blue.svg)](https://floydhub.com/run?template=https://github.com/floydhub/pix2code-template)
 [![MIT](https://img.shields.io/cocoapods/l/AFNetworking.svg)](https://github.com/emilwallner/Screenshot-to-code-in-Keras/blob/master/LICENSE)
 
 This is the code for the article ['Turning design mockups into code with deep learning'](https://blog.floydhub.com/Turning-design-mockups-into-code-with-deep-learning/) on FloydHub's blog. 
@@ -10,7 +10,7 @@ The field took off last year when Tony Beltramelli introduced the [pix2code pape
 
 Currently, the largest barrier to automating front-end development is computing power. However, we can use current deep learning algorithms, along with synthesized training data, to start exploring artificial front-end automation right now.
 
-In the provided models, we’ll teach a neural network how to code a basic a HTML and CSS website based on a picture of a design mockup.
+In the provided models, we’ll teach a neural network how to code a basic HTML and CSS website based on a picture of a design mockup.
 
 We’ll build the neural network in three iterations. Starting with a Hello World version, followed by the main neural network layers, and ending by training it to generalize. 
 
@@ -32,22 +32,22 @@ A quick overview of the process:
 ## Installation
 
 ### FloydHub
-FloydHub is hands down the best option to run models on cloud GPUs: [floydhub.com](https://www.floydhub.com/)
+
+[![Run on FloydHub](https://static.floydhub.com/button/button.svg)](https://floydhub.com/run?template=https://github.com/floydhub/pix2code-template)
+
+Click this button to open a [Workspace](https://blog.floydhub.com/workspaces/) on [FloydHub](https://www.floydhub.com/?utm_medium=readme&utm_source=pix2code&utm_campaign=aug_2018) where you will find the same environment and dataset used for the *Bootstrap version*. You can also find the trained models for testing.
+
 ``` bash
 pip install floyd-cli
 floyd login
 git clone https://github.com/emilwallner/Screenshot-to-code-in-Keras
-cd Screenshot-to-code-in-Keras
+cd Screenshot-to-code-in-Keras/floydhub 
 floyd init projectname
-floyd run --gpu --env tensorflow-1.4 --data emilwallner/datasets/imagetocode/1:data --mode jupyter
+floyd run --gpu --env tensorflow-1.4 --data emilwallner/datasets/imagetocode/2:data --data emilwallner/datasets/html_models/1:weights --mode jupyter
 ```
 ### Local
 ``` bash
-pip install keras
-pip install tensorflow
-pip install pillow
-pip install h5py
-pip install jupyter
+pip install keras tensorflow pillow h5py jupyter
 ```
 ```
 git clone https://github.com/emilwallner/Screenshot-to-code-in-Keras
@@ -100,5 +100,6 @@ The final version, the Bootstrap version, is prepared with a small set to test r
 - [HTML](https://www.floydhub.com/emilwallner/datasets/html_models)
 
 ## Acknowledgments
-- The code is largly influenced by Tony Beltramelli's pix2code paper. [Code](https://github.com/tonybeltramelli/pix2code) [Paper](https://arxiv.org/abs/1705.07962)
+- Thanks to IBM for donating computing power through their PowerAI platform
+- The code is largely influenced by Tony Beltramelli's pix2code paper. [Code](https://github.com/tonybeltramelli/pix2code) [Paper](https://arxiv.org/abs/1705.07962)
 - The structure and some of the functions are from Jason Brownlee's [excellent tutorial](https://machinelearningmastery.com/develop-a-caption-generation-model-in-keras/)
